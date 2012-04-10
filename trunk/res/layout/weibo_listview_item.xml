@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/weibo_listview_item_bg"
+    >
+    <RelativeLayout 
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	>
+    	<ImageView 
+    		android:id="@+id/weibo_listview_item_logo"
+    		android:layout_width="42dp"
+    		android:layout_height="42dp"
+    		android:layout_alignParentLeft="true"
+    		android:layout_alignParentTop="true"
+    		android:layout_margin="@dimen/dm_timeline_logo_margin"/>
+    	<ImageView 
+    		android:id="@+id/weibo_listview_item_image"
+    		android:layout_width="72dp"
+    		android:layout_height="48dp"
+    		android:layout_alignParentRight="true"
+    		android:layout_alignParentTop="true"
+    		android:layout_margin="@dimen/dm_timeline_image_margin"/>
+    	<LinearLayout 
+    		android:id="@+id/weibo_listview_item_info"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:orientation="vertical"
+    		android:layout_toRightOf="@+id/weibo_listview_item_logo"
+    		android:layout_toLeftOf="@+id/weibo_listview_item_image">
+    		<TextView 
+    			android:id="@+id/weibo_listview_item_screen_name"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:textColor="@color/cl_timeline_screen_name"
+    			android:textSize="@dimen/dm_timeline_screen_name"/>
+    		<TextView 
+    			android:id="@+id/weibo_listview_item_create_time"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:textColor="@color/cl_timeline_create_time"
+    			android:textSize="@dimen/dm_timeline_create_time"/>
+    	</LinearLayout>
+    </RelativeLayout>
+    
+    <TextView 
+    	android:id="@+id/weibo_listview_item_text"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:textColor="@color/cl_timeline_text"
+    	android:textSize="@dimen/dm_timeline_text"
+    	android:paddingLeft="@dimen/dm_timeLine_text_padding"
+    	android:paddingRight="@dimen/dm_timeLine_text_padding"/>
+
+     <TextView 
+    	android:id="@+id/weibo_listview_item_retweet_text"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:background="@drawable/retweet_text_bg"
+    	android:textSize="@dimen/dm_timeline_retweet_text"
+    	android:paddingLeft="@dimen/dm_timeline_retweet_text_padding"
+    	android:paddingRight="@dimen/dm_timeline_retweet_text_padding"/>
+	
+</LinearLayout>

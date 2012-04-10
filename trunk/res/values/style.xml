@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright 2011 Sina.
+ *
+ * Licensed under the Apache License and Weibo License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.open.weibo.com
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<resources>
+	<style name="ContentOverlay" parent="android:style/Theme.Dialog">
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+        <item name="android:windowContentOverlay">@null</item> 
+        <item name="android:backgroundDimEnabled">false</item>
+	</style>
+	<style name="titlebar">
+		<item name="android:windowTitleBackgroundStyle">@style/titlebar_bg</item>
+		 <item name="android:windowTitleSize">36dp</item>
+	</style>
+	
+	<style name="titlebar_bg">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+	
+	<style name="userinfo_square_cell">
+        <item name="android:gravity">center</item>
+        <item name="android:padding">0.0dip</item>
+    </style>   
+    <style name="userinfo_panel_textview_count">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:duplicateParentState">true</item>
+    </style>
+    <style name="userinfo_panel_textview_title">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:duplicateParentState">true</item>
+    </style>
+	
+</resources>

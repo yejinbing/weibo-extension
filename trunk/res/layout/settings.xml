@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	android:title="@string/settings">
+	<PreferenceCategory
+		android:title="@string/general_settings">
+		<Preference
+			android:key="clear_cache" 
+	        android:title="@string/clear_cache"/>
+	    <EditTextPreference
+	    	android:key="max_cache" 
+	        android:title="@string/max_cache"
+	        android:numeric="integer"/>
+	</PreferenceCategory>
+	<PreferenceCategory
+		android:title="@string/automatic_alert_settings">
+		<CheckBoxPreference
+			android:key="automatic_alert"
+			android:title="@string/automatic_alert"
+			android:summaryOn="@string/automatic_alert_enable"
+			android:summaryOff="@string/automatic_alert_disable"/>
+		<ListPreference
+			android:key="inspection_interval"
+			android:title="@string/inspection_interval"
+			android:entries="@array/inspection_interval_entries"
+			android:entryValues="@array/inspection_interval_entryValues"
+			android:defaultValue="0"/>
+	</PreferenceCategory>
+</PreferenceScreen>

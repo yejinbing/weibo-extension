@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!--
+/*
+ * Copyright 2011 Sina.
+ *
+ * Licensed under the Apache License and Weibo License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.open.weibo.com
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<resources>
+	<color name="cl_timeline_bg">#FF000000</color>
+	<color name="cl_timeline_screen_name">#FFFF0000</color>
+	<color name="cl_timeline_create_time">#FF000000</color>
+	<color name="cl_timeline_list_bg">#FFE8E8E8</color>
+	<color name="cl_timeline_text">#FF000000</color>
+	<color name="cl_timeline_retweet_screen_name">#FF512EF5</color> 
+	<color name="cl_timeline_retweet_text">#FF000000</color>
+    <color name="transparent">#00000000</color>
+    
+    <color name="cl_weibolist_screen_name">#FFFF0000</color>
+	<color name="cl_weibolist_create_time">#FF000000</color>
+	<color name="cl_weibolist_retweet_screen_name">#FF512EF5</color> 
+	
+    <color name="cl_tab_text">#FFFFFFFF</color>
+    
+    <color name="cl_singleweibo_repost_comment">#FF7AA5B9</color>
+    
+    <color name="cl_userprofile_screen_name">#FF000000</color>
+    <color name="cl_userprofile_remind_text">#FF7AA5B9</color>
+  	<color name="cl_userprofile_text">#FF000000</color>
+    
+    <color name="cl_comment_simple_item_name">#FF39AE00</color>
+    <color name="cl_comment_simple_item_create">#FF909090</color>
+    <color name="cl_comment_simple_item_text">#FF000000</color>
+    <color name="text_num_gray">#333</color>
+</resources> 

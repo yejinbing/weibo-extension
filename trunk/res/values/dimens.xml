@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="dm_timeline_screen_name">14sp</dimen>
+	<dimen name="dm_timeline_create_time">14sp</dimen>
+	<dimen name="dm_timeline_text">15sp</dimen>
+	<dimen name="dm_timeline_retweet_screen_name">15sp</dimen>
+	<dimen name="dm_timeline_retweet_text">15sp</dimen>
+	<dimen name="dm_timeline_logo_margin">2dp</dimen>
+	<dimen name="dm_timeline_image_margin">2dp</dimen>
+	<dimen name="dm_timeLine_text_padding">10dp</dimen>
+	<dimen name="dm_timeline_retweet_text_padding">12dp</dimen>
+	<dimen name="dm_comment_simple_item_name">15sp</dimen>
+	<dimen name="dm_comment_simple_item_create">14sp</dimen>
+	<dimen name="dm_comment_simple_item_text">15sp</dimen>
+	<dimen name="dm_comment_simple_item_margin">4dp</dimen>
+	
+	<dimen name="dm_singleweibo_repost_comment">14sp</dimen>
+	
+	<dimen name="dm_userprofile_avatar_size">72dp</dimen>
+	<dimen name="dm_userprofile_avatar_margin">10dp</dimen>
+	<dimen name="dm_userprofile_screen_name_size">17sp</dimen>
+	<dimen name="dm_userprofile_screen_name_margin_left">10dp</dimen>
+	<dimen name="dm_userprofile_screen_name_margin_top">30dp</dimen>
+	<dimen name="dm_userprofile_sex_size">15dp</dimen>
+	<dimen name="dm_userprofile_remind_text_size">16sp</dimen>
+	<dimen name="dm_userprofile_text_size">16sp</dimen>
+	<dimen name="dm_userprofile_container_margin">10dp</dimen>
+	
+	<dimen name="dialog_left_margin">10dp</dimen>
+	<dimen name="dialog_top_margin">30dp</dimen>
+	<dimen name="dialog_right_margin">10dp</dimen>
+	<dimen name="dialog_bottom_margin">10dp</dimen>	
+	<dimen name="dialog_btn_close_right_margin">10dp</dimen>
+	<dimen name="dialog_btn_close_top_margin">10dp</dimen>
+</resources>

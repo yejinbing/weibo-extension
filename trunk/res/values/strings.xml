@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WeiboExtension</string>    
+  	<string name="ok">Ok</string>
+  	<string name="cancel">Cancel</string>
+  	<string name="default_account">Default Account</string>
+  	<string name="select_default_account_remind">Pelease select a default login account</string>
+  	
+  	<string name="reposts_count">Forwarding</string>
+  	<string name="comments_count">Comment</string>
+  	
+  	<string name="retry">Retry</string>
+  	<string name="network_error">Network error, please retry!</string>
+  	
+  	<string name="back">Back</string>
+	<string name="favorite">Favorite</string>
+	<string name="comment">Comment</string>
+	<string name="transmit">Transmit</string>
+	<string name="share">Share</string>
+	
+	<string name="create_favorites_success">Create favorites success</string>
+	<string name="create_favorites_failure">Create favorites failure</string>
+	<string name="destory_favorites_success">Destory favorites success</string>
+	<string name="destory_favorites_failure">Destory favorites failure</string>
+	
+    <string name="delete_all">Delete all</string>
+	<string name="send">Send</string>
+    <string name="close">Close</string>
+    <string name="share_weibo_view_title">Send weibo</string>
+    <string name="please_login">Please login!</string>
+    <string name="send_success">Send success!</string>
+    <string name="send_failed">Send failure!</string>
+    <string name="del_pic">delete Pic?</string>
+    
+    <string name="expression">Expression</string>
+    <string name="photo">Photo</string>
+    <string name="location">Location</string>
+    <string name="at">At</string>
+    
+<!-- Settings -->
+	<string name="general_settings">General_settings</string>
+	<string name="automatic_alert_settings">Automatic alert settings</string>
+	<string name="automatic_alert">Automatic alert</string>
+	<string name="automatic_alert_enable">Enable automatic alert</string>
+	<string name="automatic_alert_disable">Disnable automatic alert</string>
+	<string name="inspection_interval">Inspection interval</string>
+	<string-array name="inspection_interval_entries">
+		<item >1 minutes</item>
+		<item >5 minutes</item>
+		<item >10 minutes</item>
+		<item >20 minutes</item>
+		<item >30 minutes</item>
+		<item >1 hour</item>
+		<item >2 hour</item>
+		<item >6 hour</item>
+		<item >12 hour</item>
+	</string-array>
+<!-- MyMessagesActivity -->
+	<string-array name="my_messages_title">
+		<item ><i>@Me</i></item>
+		<item >Comment</item>
+<!-- 		<item >Letter</item> -->
+	</string-array>
+<!-- user profile -->
+	<string name="cancel_attention">Cancel Attention</string>
+	<string name="userprofile_address">Address:</string>
+	<string name="userprofile_introduce">Introduce:</string>
+	<string name="userprofile_login_name">Login name:</string>
+	<string name="attention">Attention</string>
+	<string name="weibo">Weibo</string>
+	<string name="fans">Fans</string>
+	<string name="topic">Topic</string>
+	<string name="attention_success">Attention success</string>
+	<string name="attention_failure">Attention failure</string>
+	<string name="cancel_attention_success">Cancel attention success</string>
+	<string name="cancel_attention_failure">Cancel attention failure</string>
+<!-- WebImageViewer -->  	
+  	<string name="no_image">No image!</string>
+  	<string name="image_save_to">The image is saved to the path:</string>
+  	<string name="image_save_failure">The image is saved failured!</string>
+<!-- pull to refresh -->  	
+  	<string name="pull_to_refresh_pull_label">Pull to refresh...</string>
+    <string name="pull_to_refresh_release_label">Release to refresh...</string>
+    <string name="pull_to_refresh_refreshing_label">Loading...</string>
+    <string name="pull_to_refresh_tap_label">Tap to refresh...</string>
+    <string name="last_refresh_time">Last refresh:</string>
+    <string name="date_format_time">yy-MM-dd HH:mm</string>
+<!-- timeline menu -->
+	<string name="clear_list">Clear List</string>
+	<string name="user_list">User List</string>
+	<string name="settings">Settings</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
+<!-- userlist menu -->
+    <string name="add_user">Add User</string>
+    <string name="home">Home</string>
+<!-- userlist user long click -->
+	<string-array name="userlist_options">
+		<item >Delete</item>
+		<item >Set as default</item>
+		<item >Modify</item>
+	</string-array>
+	<string-array name="userlist_options_cancel">
+		<item >Delete</item>
+		<item >Cancel to set as default</item>
+		<item >Modify</item>
+	</string-array>
+<!-- time track -->
+    <string name="seconds_ago"><i> seconds ago</i></string>
+    <string name="minutes_ago"><i> minutes ago</i></string>
+    <string name="hours_ago"><i> hours ago</i></string>
+    <string name="today"><i>Today </i></string> 
+<!-- date format -->
+	<string name="date_format_hm">HH:mm</string>
+	<string name="date_format_mdhm">MM-dd HH:mm</string>
+	<string name="delete_user">Delete User</string>
+	<string name="delete_user_remind">Are you sure to delete this account?</string>
+	
+	<string name="new_microblogging"><i> new microblogging</i></string>
+<!-- settings -->
+	<string name="cache">Cache</string>
+	<string name="clear_cache">Clear cache</string>
+	<string name="max_cache">The number of the maximum cache</string>
+<!-- tab -->	
+	<string name="tab_home_page">Home page</string>
+	<string name="tab_personal_page">Personal page</string>
+	<string name="tab_message_center">Message</string>
+	<string name="tab_relationship">Relationship</string>
+	
+	<string name="clear_cache_dialog_msg">Are you sure you clear all cache?</string>
+	<string name="clear_cache_success">cache is cleared!</string>
+	<string name="clear_cache_failure">Clear all cache failure!</string>
+	<string name="exit_dialog_msg">Are you sure you exit the program?</string>
+	
+    <string name="ts_snssample_service_name">Weibo extension</string>
+
+    <string name="snssample_register_txt">Register your account information</string>
+
+    <!-- Title of the login dialog -->
+    <string name="ts_snssample_login_label">Enter account info</string>
+
+    <!-- Lable for the login button on the login dialog -->
+    <string name="gui_sign_in_txt">Sign in</string>
+
+    <!-- Shown in progress dialog while login details are being validated -->
+    <string name="ts_snssample_authentication_progress_text">Authenticating account information...</string>
+
+    <!--Title of login error dialog -->
+    <string name="ts_snssample_authentication_failed_title">Authentication failed</string>
+
+    <!-- Message in the login error dialog if we could not connect to facebook -->
+    <string name="ts_snssample_connection_failed">Connection failed</string>
+
+    <!-- Used in timescape service configuration list and as title in the log out dialog,
+    in the configuration list the string is followed by the logged in users name, for example:
+    "Log out Erik Testman"-->
+    <string name="ts_snssample_logout_label">Log out</string>
+
+    <!-- Message in the log out dialog -->
+    <string name="ts_snssample_logout_message">The account information will be deleted from your phone</string>
+
+    <!-- Error message in toast that is shown if something goes wrong when you touch a facebook tile -->
+    <string name="ts_snssample_launch_error_message">An error occurred when trying to launch Facebook.</string>
+
+    <!-- Button used to accept the facebook disclaimer  -->
+    <string name="gui_accept_terms_txt">Accept</string>
+
+    <!-- Title of notification that is shown when we are fetching updates from facebook -->
+    <string name="ts_snssample_update_notification_title">Updates from Facebook</string>
+
+    <!-- Message of notification that is shown when we are fetching updates from facebook -->
+    <string name="ts_snssample_update_notification_message">Connecting to server to retrieve updates</string>
+
+    <!-- Title of notification shown if our login credentials have expired -->
+    <string name="ts_snssample_auth_failed_notification_title">Credentials expired</string>
+
+    <!-- Message of notification shown if our login credentials have expired -->
+    <string name="ts_snssample_auth_failed_notification_message">Please sign in again</string>
+
+    <!-- Title of notification that is shown if an update fails -->
+    <string name="ts_snssample_update_failed_notification_title">Could not update from Facebook</string>
+    
+<!-- About info -->	
+	<string name="about_dialog_text">Author: JinBing Ye
+   		\nEmail:yejinbing@gmail.com
+   		\nWeibo:http://weibo.com/u/1651930930
+   		\n
+   		\nVersion:1.3.4
+   		\nUpdate Data:2012-3-27
+   	</string>
+</resources>

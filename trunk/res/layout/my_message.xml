@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res/com.googlecode.WeiboExtension"
+	android:orientation="vertical" 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<LinearLayout android:layout_width="fill_parent"
+		android:gravity="center_horizontal" 
+		android:id="@+id/header_layout"
+		android:orientation="vertical" 
+		android:layout_height="wrap_content">
+		<org.taptwo.android.widget.TitleFlowIndicator
+			android:id="@+id/my_message_viewflowindic" 
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:background="@drawable/titlebar_bg"
+			app:footerLineHeight="2"
+			app:footerTriangleHeight="10" 
+			app:textColor="#FFFFFFFF" 
+			app:selectedColor="#FFFFC445" 
+			app:footerColor="#FFFFC445" 
+			app:titlePadding="10" 
+			app:textSize="15"/>
+	</LinearLayout>
+	
+	<org.taptwo.android.widget.ViewFlow
+		android:duplicateParentState="true" 
+		android:id="@+id/my_message_viewflow"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"/>
+</LinearLayout> 
