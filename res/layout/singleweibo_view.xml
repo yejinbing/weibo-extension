@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+	<com.googlecode.WeiboExtension.View.ToolBarPanelView
+		android:id="@+id/singleweibo_toolbarpanel"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_alignParentBottom="true"
+		android:background="@drawable/tab_bg"/>
+	<LinearLayout 
+    	android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_above="@id/singleweibo_toolbarpanel"
+	    android:background="@drawable/singleweibo_view_bg">
+	    <ListView
+	        android:id="@+id/singleweibo_list"
+	        android:layout_height="fill_parent"
+	        android:layout_width="wrap_content"
+	        android:fadingEdge="none"
+			android:divider="@drawable/commons_divider"
+			android:cacheColorHint="@null"	
+			android:listSelector="@drawable/weibo_listview_selector_bg"/>
+	</LinearLayout>
+</RelativeLayout>

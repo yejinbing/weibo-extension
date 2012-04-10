@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center">
+	    <TextView    			
+ 	  		android:id="@+id/comment_simple_item_name"
+ 	  		android:layout_width="wrap_content"
+ 	  		android:layout_height="wrap_content"
+ 	  		android:layout_alignParentTop="true"
+ 	  		android:layout_alignParentLeft="true"
+ 	  		android:layout_marginLeft="@dimen/dm_comment_simple_item_margin"
+ 	  		android:layout_marginRight="@dimen/dm_comment_simple_item_margin"
+ 	  		android:textSize="@dimen/dm_comment_simple_item_name"
+ 	  		android:textColor="@color/cl_comment_simple_item_name"/>
+ 	  	<TextView    			
+ 	  		android:id="@+id/comment_simple_item_create"
+ 	  		android:layout_width="wrap_content"
+ 	  		android:layout_height="wrap_content"
+ 	  		android:layout_alignParentRight="true"
+ 	  		android:layout_toLeftOf="@id/comment_simple_item_name"
+ 	  		android:layout_marginLeft="@dimen/dm_comment_simple_item_margin"
+ 	  		android:layout_marginRight="@dimen/dm_comment_simple_item_margin"
+ 	  		android:textSize="@dimen/dm_comment_simple_item_create"
+ 	  		android:textColor="@color/cl_comment_simple_item_create"/>		  	
+	</RelativeLayout>
+
+    <TextView 
+    	android:id="@+id/comment_simple_item_text"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:textColor="@color/cl_comment_simple_item_text"
+    	android:textSize="@dimen/dm_comment_simple_item_text"/>
+    		
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- 自动检测间隔 -->
+	<string-array name="inspection_interval_entryValues">
+		<item >60000</item>
+		<item >300000</item>
+		<item >600000</item>
+		<item >1200000</item>
+		<item >1800000</item>
+		<item >3600000</item>
+		<item >7200000</item>
+		<item >21600000</item>
+		<item >43200000</item>
+	</string-array>
+</resources>
