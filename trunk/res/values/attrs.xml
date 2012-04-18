@@ -32,4 +32,10 @@
         <attr name="footerColor" format="color" />
         <attr name="footerTriangleHeight" format="integer" />
     </declare-styleable>    
+    <declare-styleable name="GifView">  
+        <attr name="android:src" />
+        <attr name="android:maxWidth" />
+        <attr name="android:maxHeight" />
+        <attr name="android:adjustViewBounds" />
+    </declare-styleable> 
 </resources>

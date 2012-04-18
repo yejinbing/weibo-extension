@@ -9,9 +9,9 @@ import android.os.Bundle;
 
 public class StartActivity extends Activity{
 	
-	private static final String TAG = "StartActivity";
+	private static final String		TAG					= "StartActivity";
 	
-	private Context currentContext = StartActivity.this;
+	private Context					currentContext		= StartActivity.this;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

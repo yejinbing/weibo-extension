@@ -87,45 +87,45 @@ import android.widget.TextView;
 
 public class ShareActivity extends Activity implements OnClickListener{
 
-	private static final String TAG = "ShareActivity";
+	private static final String		TAG					= "ShareActivity";
 	
-	private Context currentContext = ShareActivity.this;
+	private Context					currentContext		= ShareActivity.this;
 	
-	private static final int REQUEST_CODE_TAKE_PICTURE = 1;
+	private static final int		REQUEST_CODE_TAKE_PICTURE = 1;
 	
-	public static final String EXTRA_WEIBO_CONTENT = "com.googlecode.WeiboExtension.content";
-    public static final String EXTRA_PIC_URI = "com.googlecode.WeiboExtension.pic.uri";
+	public static final String		EXTRA_WEIBO_CONTENT = "com.googlecode.WeiboExtension.content";
+    public static final String		EXTRA_PIC_URI 		= "com.googlecode.WeiboExtension.pic.uri";
     
-    public static final String SAVED_STATE_ACCESS_TOKEN = "com.googlecode.WeiboExtension.accesstoken";
-    public static final String SAVED_STATE_COSUMER_KEY = "com.googlecode.WeiboExtension.consumerkey";
-    public static final String EXTRA_ACCESS_TOKEN = "com.googlecode.WeiboExtension.accesstoken";
-    public static final String EXTRA_COSUMER_KEY = "com.googlecode.WeiboExtension.consumerkey";
+    public static final String		SAVED_STATE_ACCESS_TOKEN = "com.googlecode.WeiboExtension.accesstoken";
+    public static final String		SAVED_STATE_COSUMER_KEY = "com.googlecode.WeiboExtension.consumerkey";
+    public static final String		EXTRA_ACCESS_TOKEN = "com.googlecode.WeiboExtension.accesstoken";
+    public static final String		EXTRA_COSUMER_KEY = "com.googlecode.WeiboExtension.consumerkey";
 	
-    private TextView mTextNum;
-    private Button mSend;
-    private EditText mEdit;
-    private FrameLayout mPiclayout;
+    private TextView				mTextNum;
+    private Button					mSend;
+    private EditText				mEdit;
+    private FrameLayout				mPiclayout;
     
-    private GridView mEmotionsView;
+    private GridView				mEmotionsView;
     private ArrayList<HashMap<String, Object>> mEmotions;
-    private SimpleAdapter mEmotionsAdapter;
+    private SimpleAdapter			mEmotionsAdapter;
     
-    private ToolBarPanelView mToolBarPanel;
-    private ToolBarView toolBack;
-    private ToolBarView toolEmotion;
-    private ToolBarView toolPhoto;
-    private ToolBarView toolAt;
-    private ToolBarView toolLocation;
+    private ToolBarPanelView		mToolBarPanel;
+    private ToolBarView				toolBack;
+    private ToolBarView				toolEmotion;
+    private ToolBarView				toolPhoto;
+    private ToolBarView				toolAt;
+    private ToolBarView				toolLocation;
 
-    private String mPicPath = "";
-    private String mContent = "";
+    private String					mPicPath = "";
+    private String					mContent = "";
     
-    private Weibo mWeibo;
+    private Weibo					mWeibo;
 
-    public static final int WEIBO_MAX_LENGTH = 140;
+    public static final int			WEIBO_MAX_LENGTH	= 140;
     
-    private ShareTask mShareTask;
-    private GetEmotionsTask mGetEmotionsTask;
+    private ShareTask				mShareTask;
+    private GetEmotionsTask			mGetEmotionsTask;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

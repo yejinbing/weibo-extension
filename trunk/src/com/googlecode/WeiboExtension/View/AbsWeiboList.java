@@ -8,13 +8,19 @@ import java.util.List;
 import java.util.Map;
 import sinaweibo4android.WeiboException;
 import sinaweibo4android.api.Status;
+
+import com.googlecode.WeiboExtension.AccountListActivity;
 import com.googlecode.WeiboExtension.Constants;
 import com.googlecode.WeiboExtension.R;
 import com.googlecode.WeiboExtension.SingleWeiboActivity;
 import com.googlecode.WeiboExtension.WeiboListAdapter;
+import com.googlecode.WeiboExtension.EventStream.SNSSamplePluginConfig;
 import com.googlecode.WeiboExtension.Utility.Utility;
 import com.googlecode.WeiboExtension.db.TimeLineDBAdapter;
+
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
@@ -170,6 +176,8 @@ public abstract class AbsWeiboList extends PullToRefreshListView{
 	
 	private class RefreshHeaderTask extends AsyncTask<Void, Void, List<Map<String, Object>>> {
 
+		private int statusCode = -1;
+		
 		@Override
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
@@ -185,11 +193,8 @@ public abstract class AbsWeiboList extends PullToRefreshListView{
 			} catch (WeiboException e) {
 				// TODO Auto-generated catch block
 				Log.e(TAG, e.getStatusCode() + ":" + e.getMessage());
-				if (e.getStatusCode() == 90000) {
-					return new ArrayList<Map<String,Object>>(0);
-				}else {
-					return null;
-				}
+				statusCode = e.getStatusCode();
+				return null;
 			}
 		}
 
@@ -225,7 +230,25 @@ public abstract class AbsWeiboList extends PullToRefreshListView{
 
 				weiboListAdapter.notifyDataSetChanged();
 			}else {
-				Utility.displayToast(mContext, R.string.network_error);
+//				Utility.displayToast(mContext, R.string.network_error);
+				switch (statusCode) {						
+					case 21327:
+						new AlertDialog.Builder(mContext)
+								.setTitle(R.string.expired_token)
+								.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+									
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										Intent intent = new Intent(mContext, AccountListActivity.class);
+										intent.setAction(AccountListActivity.INTENT_ACTION_LOGIN);
+										mContext.startActivity(intent);
+									}
+								})
+								.setNegativeButton(R.string.cancel, null)
+								.show();
+					case 90000:
+					default:
+				}
 			}
 			Date date = new Date(System.currentTimeMillis());
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -326,6 +349,8 @@ public abstract class AbsWeiboList extends PullToRefreshListView{
 				}
 				map.put(WeiboListAdapter.WEIBOLIST_THUMBNAIL_URL,
 						cursor.getString(cursor.getColumnIndex(TimeLineDBAdapter.KEY_THUMBNAIL_URL)));
+				map.put(WeiboListAdapter.WEIBOLIST_BMIDDLE_URL, 
+						cursor.getString(cursor.getColumnIndex(TimeLineDBAdapter.KEY_BMIDDLE_URL)));
 				map.put(WeiboListAdapter.WEIBOLIST_ORIGINAL_URL,
 						cursor.getString(cursor.getColumnIndex(TimeLineDBAdapter.KEY_ORIGINAL_URL)));
 				list.add(map);
@@ -357,6 +382,7 @@ public abstract class AbsWeiboList extends PullToRefreshListView{
 			String thumbnailPicUrl = retweetStatus.getThumbnail_pic();
 			if (thumbnailPicUrl != null && thumbnailPicUrl.length() != 0) {
 				map.put(WeiboListAdapter.WEIBOLIST_THUMBNAIL_URL, thumbnailPicUrl);
+				map.put(WeiboListAdapter.WEIBOLIST_BMIDDLE_URL, retweetStatus.getBmiddle_pic());
 				map.put(WeiboListAdapter.WEIBOLIST_ORIGINAL_URL, retweetStatus.getOriginal_pic());
 			}
 		}
@@ -366,6 +392,7 @@ public abstract class AbsWeiboList extends PullToRefreshListView{
 				Log.d(TAG, "thumbnailPicUrl:" + thumbnailPicUrl);
 			}
 			map.put(WeiboListAdapter.WEIBOLIST_THUMBNAIL_URL, thumbnailPicUrl);
+			map.put(WeiboListAdapter.WEIBOLIST_BMIDDLE_URL, status.getBmiddle_pic());
 			map.put(WeiboListAdapter.WEIBOLIST_ORIGINAL_URL, status.getOriginal_pic());
 		}
 		

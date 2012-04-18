@@ -34,6 +34,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -42,53 +43,55 @@ import android.widget.TextView;
 
 public class SingleWeiboActivity extends Activity{
 	
-	private static final String TAG = "SingleWeiboActivity";
+	private static final String		TAG					= "SingleWeiboActivity";
 	
-	private Context currentContext = SingleWeiboActivity.this;
+	private Context					currentContext		= SingleWeiboActivity.this;
 	
-	public static final String EXTRA_WEIBO_ID = "weibo_id";
-	public static final String EXTRA_ACCESS_TOKEN = "accesstoken";
-    public static final String EXTRA_TOKEN_SECRET = "consumerkey";
+	public static final String		EXTRA_WEIBO_ID		= "weibo_id";
+	public static final String		EXTRA_ACCESS_TOKEN	= "accesstoken";
+    public static final String		EXTRA_TOKEN_SECRET	= "consumerkey";
 
 	private List<Map<String, Object>> mComments;
-	private CommentSimpleAdatper mCommentAdatper;
+	private CommentSimpleAdatper	mCommentAdatper;
 	
-	private LinearLayout weiboView;
-	private ListView mSingleWeiboListView;
-	private LinearLayout mLoadView;
-	private ProgressBar mLoadViewProgress;
-	private TextView mLoadViewText;
+	private LinearLayout			weiboView;
+	private ListView				mSingleWeiboListView;
+	private LinearLayout			mLoadView;
+	private ProgressBar				mLoadViewProgress;
+	private TextView				mLoadViewText;
 	
-	private ImageView weiboLogo;
-	private TextView weiboScreenName;
-	private TextView weiboCreateAt;
-	private LinearLayout weiboContent;
-	private TextView weiboText;
-	private ImageView weiboImage;
-	private TextView weiboRepostComment;
-	private LinearLayout weiboRetweetContent;
-	private TextView weiboRetweetText;
-	private ImageView weiboRetweetImage;
-	private TextView weiboRetweetCreateAt;
-	private TextView weiboRetweetRepostComment;
+	private ImageView				weiboLogo;
+	private TextView				weiboScreenName;
+	private TextView				weiboCreateAt;
+	private LinearLayout			weiboContent;
+	private TextView				weiboText;
+	private ImageView				weiboImage;
+	private LinearLayout			weiboRetweetContent;
+	private TextView				weiboRetweetText;
+	private ImageView				weiboRetweetImage;
+	private TextView				weiboRetweetCreateAt;
+	private TextView				weiboRetweetRepostComment;
 	
-	private String imageUrl;
-	private String retweetImageUrl;
+	private Button					btnRepostNum;
+	private Button					btnCommentNum;
 	
-	private long weiboId;
-	private Weibo mWeibo;
+	private String					imageUrl;
+	private String					retweetImageUrl;
 	
-	private ToolBarPanelView mToolBarPanel;
-	private ToolBarView toolBack;
-	private ToolBarView toolFavorite;
-	private ToolBarView toolComment;
-	private ToolBarView toolTransmit;
-	private ToolBarView toolShare;
+	private long					weiboId;
+	private Weibo					mWeibo;
 	
-	private boolean isBottom = false;	//判断是否处于底端
+	private ToolBarPanelView		mToolBarPanel;
+	private ToolBarView				toolBack;
+	private ToolBarView				toolFavorite;
+	private ToolBarView				toolComment;
+	private ToolBarView				toolTransmit;
+	private ToolBarView				toolShare;
+	
+	private boolean					isBottom			= true;	//判断是否处于底端
 		
-	public static final int LOGO_RES = R.drawable.avatar;
-	public static final int IMAGE_RES = R.drawable.weibo_listview_pic_loading;
+	public static final int			LOGO_RES			= R.drawable.avatar;
+	public static final int			IMAGE_RES			= R.drawable.weibo_listview_pic_loading;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -112,12 +115,18 @@ public class SingleWeiboActivity extends Activity{
 		weiboContent = (LinearLayout)weiboView.findViewById(R.id.singleweibo_content);
 		weiboText = (TextView)weiboView.findViewById(R.id.singleweibo_text);
 		weiboImage = (ImageView)weiboView.findViewById(R.id.singleweibo_image);
-		weiboRepostComment = (TextView)weiboView.findViewById(R.id.singleweibo_repost_comment);
 		weiboRetweetContent = (LinearLayout)weiboView.findViewById(R.id.singleweibo_retweet_content);
 		weiboRetweetText = (TextView)weiboView.findViewById(R.id.singleweibo_retweet_text);
 		weiboRetweetImage = (ImageView)weiboView.findViewById(R.id.singleweibo_retweet_image);
 		weiboRetweetCreateAt = (TextView)weiboView.findViewById(R.id.singleweibo_retweet_create);
 		weiboRetweetRepostComment = (TextView)weiboView.findViewById(R.id.singleweibo_retweet_repost_comment);
+		
+		btnRepostNum = (Button) weiboView.findViewById(R.id.singleweibo_btnRepostNum);
+		btnCommentNum = (Button) weiboView.findViewById(R.id.singleweibo_btnCommentNum);
+		btnRepostNum.setText(currentContext.getResources().getString(R.string.reposts_count)
+				+ "(" + 0 + ")");
+		btnCommentNum.setText(currentContext.getResources().getString(R.string.comments_count)
+				+ "(" + 0 + ")");
 
 		Settings mSettings = new Settings(currentContext);
 		String token = mSettings.getToken();
@@ -192,7 +201,6 @@ public class SingleWeiboActivity extends Activity{
 				.findViewById(R.id.pull_to_load_progress);
 		mLoadViewText = (TextView) mLoadView
 				.findViewById(R.id.pull_to_load_text);
-		mSingleWeiboListView.addFooterView(mLoadView);
 		mLoadView.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View view) {
@@ -227,11 +235,25 @@ public class SingleWeiboActivity extends Activity{
 		
 		weiboImage.setOnClickListener(new OnImageClickListener());		
 		weiboRetweetImage.setOnClickListener(new OnImageClickListener());
+		btnCommentNum.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View view) {
+				// TODO Auto-generated method stub
+				//展开评论列表
+				if (mComments.isEmpty()) {
+					isBottom = false;
+					mSingleWeiboListView.addFooterView(mLoadView);
+					refreshComments();
+				} else {	//收起评论列表
+					isBottom = true;
+					mComments.clear();
+					mCommentAdatper.notifyDataSetChanged();
+					mSingleWeiboListView.removeFooterView(mLoadView);
+				}
+			}
+		});
 		
 		refreshWeiboInfo();
-		
-		refreshComments();
-		
 	}
 	
 	private void initToolBar() {
@@ -380,11 +402,10 @@ public class SingleWeiboActivity extends Activity{
 				//微博的转发和评论数
 				int repostsCount = result.getRepostsCount();
 				int commentsCount = result.getCommentsCount();				
-				String repostComment = currentContext.getResources().getString(R.string.reposts_count)
-						+ "(" + repostsCount + ") | "
-						+ currentContext.getResources().getString(R.string.comments_count)
-						+ "(" + commentsCount + ")";
-				weiboRepostComment.setText(repostComment);
+				btnRepostNum.setText(currentContext.getResources().getString(R.string.reposts_count)
+						+ "(" + repostsCount + ")");
+				btnCommentNum.setText(currentContext.getResources().getString(R.string.comments_count)
+						+ "(" + commentsCount + ")");
 				
 				if (Constants.Config.DEBUG) {
 					Log.d(TAG, "reposts:" + repostsCount + " comments:" + commentsCount);

@@ -14,36 +14,37 @@ import android.util.Log;
 
 public class TimeLineDBAdapter {
 	
-	public static final String TAG = "TimeLineDBAdapter";
+	public static final String		TAG					= "TimeLineDBAdapter";
 	
-	public static final String DB_NAME = "timeline.db";
-	public static final int DB_VERSION = 1;
-	public static final String TABLE_FRIENDS_TIMELINE = "friends_timeline";
-	public static final String KEY_ID = "id";
-	public static final String KEY_USER_ID = "user_id";
-	public static final String KEY_AVATAR_URL = "avatar_url";
-	public static final String KEY_SCREEN_NAME = "screen_name";
-	public static final String KEY_CREATE_TIME = "create_time";
-	public static final String KEY_TEXT = "text";
-	public static final String KEY_RETWEET_USER_ID = "retweet_user_id";
-	public static final String KEY_RETWEET_SCREEN_NAME = "retweet_screen_name";
-	public static final String KEY_RETWEET_TEXT = "retweet_text";
-	public static final String KEY_THUMBNAIL_URL = "thumbnail_url";
-	public static final String KEY_ORIGINAL_URL = "original_url";
+	public static final String		DB_NAME				= "timeline.db";
+	public static final int			DB_VERSION			= 1;
+	public static final String		TABLE_FRIENDS_TIMELINE = "friends_timeline";
+	public static final String		KEY_ID				= "id";
+	public static final String		KEY_USER_ID			= "user_id";
+	public static final String		KEY_AVATAR_URL		= "avatar_url";
+	public static final String		KEY_SCREEN_NAME		= "screen_name";
+	public static final String		KEY_CREATE_TIME		= "create_time";
+	public static final String		KEY_TEXT			= "text";
+	public static final String		KEY_RETWEET_USER_ID = "retweet_user_id";
+	public static final String		KEY_RETWEET_SCREEN_NAME = "retweet_screen_name";
+	public static final String		KEY_RETWEET_TEXT	= "retweet_text";
+	public static final String		KEY_THUMBNAIL_URL	= "thumbnail_url";
+	public static final String		KEY_BMIDDLE_URL		= "bmiddle_url";
+	public static final String		KEY_ORIGINAL_URL	= "original_url";
 	
-	public static final String TABLE_MY_MENTIONS = "my_mentions";
+	public static final String		TABLE_MY_MENTIONS	= "my_mentions";
 	
-	public static final String TABLE_COMMENTS_TO_ME = "comments_to_me";
-	public static final String KEY_COMMENT_ID = "comment_id";
-	public static final String KEY_COMMENT_USER_ID = "comment_user_id";
-	public static final String KEY_COMMENT_AVATAR_URL = "comment_avatar_url";
-	public static final String KEY_COMMENT_NAME = "comment_name";
-	public static final String KEY_COMMENT_CREATE = "comment_create";
-	public static final String KEY_COMMENT_TEXT = "comment_text";
-	public static final String KEY_COMMENT_REPLY_TEXT = "comment_reply_text";
+	public static final String		TABLE_COMMENTS_TO_ME = "comments_to_me";
+	public static final String		KEY_COMMENT_ID		= "comment_id";
+	public static final String		KEY_COMMENT_USER_ID	= "comment_user_id";
+	public static final String		KEY_COMMENT_AVATAR_URL = "comment_avatar_url";
+	public static final String		KEY_COMMENT_NAME	= "comment_name";
+	public static final String		KEY_COMMENT_CREATE	= "comment_create";
+	public static final String		KEY_COMMENT_TEXT	= "comment_text";
+	public static final String		KEY_COMMENT_REPLY_TEXT = "comment_reply_text";
 	
 
-	private static final String CREATE_TABLE_FRIENDS_TIMELINE = "CREATE TABLE "
+	private static final String		CREATE_TABLE_FRIENDS_TIMELINE = "CREATE TABLE "
 		+ TABLE_FRIENDS_TIMELINE + " ("
 		+ KEY_ID + " long primary key,"
 		+ KEY_USER_ID + " long,"
@@ -55,9 +56,10 @@ public class TimeLineDBAdapter {
 		+ KEY_RETWEET_SCREEN_NAME + " text,"
 		+ KEY_RETWEET_TEXT + " text,"
 		+ KEY_THUMBNAIL_URL + " text,"
+		+ KEY_BMIDDLE_URL + " text,"
 		+ KEY_ORIGINAL_URL + " text)";
 	
-	private static final String CREATE_TABLE_MY_MENTIONS = "CREATE TABLE "
+	private static final String		CREATE_TABLE_MY_MENTIONS = "CREATE TABLE "
 		+ TABLE_MY_MENTIONS + " ("
 		+ KEY_ID + " long primary key,"
 		+ KEY_USER_ID + " long,"
@@ -69,9 +71,10 @@ public class TimeLineDBAdapter {
 		+ KEY_RETWEET_SCREEN_NAME + " text,"
 		+ KEY_RETWEET_TEXT + " text,"
 		+ KEY_THUMBNAIL_URL + " text,"
+		+ KEY_BMIDDLE_URL + " text,"
 		+ KEY_ORIGINAL_URL + " text)";
 	
-	private static final String CREATE_TABLE_COMMENTS_TO_ME = "CREATE TABLE "
+	private static final String		CREATE_TABLE_COMMENTS_TO_ME = "CREATE TABLE "
 		+ TABLE_COMMENTS_TO_ME + " ("
 		+ KEY_COMMENT_ID + " long primary key,"
 		+ KEY_COMMENT_USER_ID + " long,"
@@ -82,9 +85,9 @@ public class TimeLineDBAdapter {
 		+ KEY_COMMENT_REPLY_TEXT + " text)";
 	
 //	private Context context;
-	private MyDBHelper dbHelper;
-	private SQLiteDatabase db = null;
-	private static TimeLineDBAdapter dbAdapter = null;
+	private MyDBHelper				dbHelper;
+	private SQLiteDatabase			db					= null;
+	private static TimeLineDBAdapter dbAdapter			= null;
 
 	public static synchronized TimeLineDBAdapter getInstance(Context context) {
 		if (dbAdapter == null)
@@ -148,7 +151,7 @@ public class TimeLineDBAdapter {
 					new String[]{KEY_ID, KEY_USER_ID, KEY_AVATAR_URL, KEY_SCREEN_NAME,
 				KEY_CREATE_TIME, KEY_TEXT, 
 				KEY_RETWEET_USER_ID, KEY_RETWEET_SCREEN_NAME, KEY_RETWEET_TEXT,
-				KEY_THUMBNAIL_URL, KEY_ORIGINAL_URL}, 
+				KEY_THUMBNAIL_URL, KEY_BMIDDLE_URL, KEY_ORIGINAL_URL}, 
 					null, null, null, null, KEY_ID + " desc");
 		return cursor;
 	}
@@ -159,7 +162,7 @@ public class TimeLineDBAdapter {
 				new String[]{KEY_ID, KEY_USER_ID, KEY_AVATAR_URL, KEY_SCREEN_NAME,
 				KEY_CREATE_TIME, KEY_TEXT, 
 				KEY_RETWEET_USER_ID, KEY_RETWEET_SCREEN_NAME, KEY_RETWEET_TEXT,
-				KEY_THUMBNAIL_URL, KEY_ORIGINAL_URL}, 
+				KEY_THUMBNAIL_URL, KEY_BMIDDLE_URL, KEY_ORIGINAL_URL},
 					KEY_ID + "=" + id, null, null, null, null);
 		return cursor;
 	}
@@ -189,12 +192,14 @@ public class TimeLineDBAdapter {
 					String thumbnailPicUrl = retweetStatus.getThumbnail_pic();
 					if (!TextUtils.isEmpty(thumbnailPicUrl)) {
 						values.put(KEY_THUMBNAIL_URL, thumbnailPicUrl);
+						values.put(KEY_BMIDDLE_URL, retweetStatus.getBmiddle_pic());
 						values.put(KEY_ORIGINAL_URL, retweetStatus.getOriginal_pic());
 					}
 				}				
 				String thumbnailPicUrl = status.getThumbnail_pic();
 				if (!TextUtils.isEmpty(thumbnailPicUrl)) {
 					values.put(KEY_THUMBNAIL_URL, thumbnailPicUrl);
+					values.put(KEY_BMIDDLE_URL, status.getBmiddle_pic());
 					values.put(KEY_ORIGINAL_URL, status.getOriginal_pic());
 				}
 				db.insert(TABLE_FRIENDS_TIMELINE, null, values);
@@ -235,12 +240,14 @@ public class TimeLineDBAdapter {
 			String thumbnailPicUrl = retweetStatus.getThumbnail_pic();
 			if (!TextUtils.isEmpty(thumbnailPicUrl)) {
 				values.put(KEY_THUMBNAIL_URL, thumbnailPicUrl);
+				values.put(KEY_BMIDDLE_URL, retweetStatus.getBmiddle_pic());
 				values.put(KEY_ORIGINAL_URL, retweetStatus.getOriginal_pic());
 			}
 		}				
 		String thumbnailPicUrl = status.getThumbnail_pic();
 		if (!TextUtils.isEmpty(thumbnailPicUrl)) {
 			values.put(KEY_THUMBNAIL_URL, thumbnailPicUrl);
+			values.put(KEY_BMIDDLE_URL, status.getBmiddle_pic());
 			values.put(KEY_ORIGINAL_URL, status.getOriginal_pic());
 		}	
 		db.update(TABLE_FRIENDS_TIMELINE, values, KEY_ID + "=" + status.getId(), null);
@@ -263,7 +270,7 @@ public class TimeLineDBAdapter {
 					new String[]{KEY_ID, KEY_USER_ID, KEY_AVATAR_URL, KEY_SCREEN_NAME,
 				KEY_CREATE_TIME, KEY_TEXT, 
 				KEY_RETWEET_USER_ID, KEY_RETWEET_SCREEN_NAME, KEY_RETWEET_TEXT,
-				KEY_THUMBNAIL_URL, KEY_ORIGINAL_URL}, 
+				KEY_THUMBNAIL_URL, KEY_BMIDDLE_URL, KEY_ORIGINAL_URL},
 					null, null, null, null, KEY_ID + " desc");
 		return cursor;
 	}
@@ -274,7 +281,7 @@ public class TimeLineDBAdapter {
 				new String[]{KEY_ID, KEY_USER_ID, KEY_AVATAR_URL, KEY_SCREEN_NAME,
 				KEY_CREATE_TIME, KEY_TEXT, 
 				KEY_RETWEET_USER_ID, KEY_RETWEET_SCREEN_NAME, KEY_RETWEET_TEXT,
-				KEY_THUMBNAIL_URL, KEY_ORIGINAL_URL}, 
+				KEY_THUMBNAIL_URL, KEY_BMIDDLE_URL, KEY_ORIGINAL_URL},
 					KEY_ID + "=" + id, null, null, null, null);
 		return cursor;
 	}
@@ -304,12 +311,14 @@ public class TimeLineDBAdapter {
 					String thumbnailPicUrl = retweetStatus.getThumbnail_pic();
 					if (!TextUtils.isEmpty(thumbnailPicUrl)) {
 						values.put(KEY_THUMBNAIL_URL, thumbnailPicUrl);
+						values.put(KEY_BMIDDLE_URL, retweetStatus.getBmiddle_pic());
 						values.put(KEY_ORIGINAL_URL, retweetStatus.getOriginal_pic());
 					}
 				}				
 				String thumbnailPicUrl = status.getThumbnail_pic();
 				if (!TextUtils.isEmpty(thumbnailPicUrl)) {
 					values.put(KEY_THUMBNAIL_URL, thumbnailPicUrl);
+					values.put(KEY_BMIDDLE_URL, status.getBmiddle_pic());
 					values.put(KEY_ORIGINAL_URL, status.getOriginal_pic());
 				}
 				db.insert(TABLE_MY_MENTIONS, null, values);
@@ -348,14 +357,16 @@ public class TimeLineDBAdapter {
 			String thumbnailPicUrl = retweetStatus.getThumbnail_pic();
 			if (!TextUtils.isEmpty(thumbnailPicUrl)) {
 				values.put(KEY_THUMBNAIL_URL, thumbnailPicUrl);
+				values.put(KEY_BMIDDLE_URL, retweetStatus.getBmiddle_pic());
 				values.put(KEY_ORIGINAL_URL, retweetStatus.getOriginal_pic());
 			}
 		}				
 		String thumbnailPicUrl = status.getThumbnail_pic();
 		if (!TextUtils.isEmpty(thumbnailPicUrl)) {
 			values.put(KEY_THUMBNAIL_URL, thumbnailPicUrl);
+			values.put(KEY_BMIDDLE_URL, status.getBmiddle_pic());
 			values.put(KEY_ORIGINAL_URL, status.getOriginal_pic());
-		}	
+		}
 		db.update(TABLE_MY_MENTIONS, values, KEY_ID + "=" + status.getId(), null);
 		db.close();
 	}

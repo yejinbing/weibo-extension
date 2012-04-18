@@ -1,5 +1,6 @@
 package com.googlecode.WeiboExtension;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -12,6 +13,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import com.googlecode.WeiboExtension.Utility.Utility;
 import com.googlecode.WeiboExtension.View.ImageShowView;
+import com.googlecode.WeiboExtension.net.ImageCache;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -27,29 +29,33 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class WebImageViewer extends Activity{
 	
-	private static final String TAG = "WebImageViewer";
+	private static final String 	TAG					= "WebImageViewer";
 	
-	private String imageSavePath = "/sdcard/WeiboExtensionDownload/image";
+	private String 					imageSavePath 		= "/sdcard/WeiboExtensionDownload/image";
 	
-	private Context currentContext = WebImageViewer.this;
+	private Context 				currentContext 		= WebImageViewer.this;
 	
-	private ImageShowView mImageShowView;
-	private ProgressBar mLoadProgress;
-	private Button btnRetry;
+	private ImageShowView 			mImageShowView;
+	private LinearLayout 			llLoading;
+	private ProgressBar 			mLoadProgress;
+	private TextView 				tvLoadingPercent;
+	private Button 					btnRetry;
 	
-	private ImageView titlebarSave;
-	private ImageView titlebarBack;
+	private ImageView 				titlebarSave;
+	private ImageView 				titlebarBack;
 	
-	private DownImageViewTask downImageViewTask = new DownImageViewTask();
+	private DownImageViewTask 		downImageViewTask 	= new DownImageViewTask();
 
-	private int retryCount = 3;
+	private int 					retryCount 			= 3;
 	
-	private String imageUrl;
-	private Bitmap imageBitmap;
+	private String 					imageUrl;
+	private Bitmap 					imageBitmap;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +72,12 @@ public class WebImageViewer extends Activity{
 		titlebarBack.setOnClickListener(new OnTitlebarClickListener());
 		
 		mImageShowView = (ImageShowView)findViewById(R.id.image_viewer_image_show);
+		llLoading = (LinearLayout) findViewById(R.id.image_viewer_llLoading);
 		mLoadProgress = (ProgressBar)findViewById(R.id.image_viewer_progress);
-		btnRetry = (Button)findViewById(R.id.image_viewer_retry);
+		tvLoadingPercent = (TextView) findViewById(R.id.image_viewer_tvLoadingPercent);
+		mLoadProgress.setProgressDrawable(getResources()
+				.getDrawable(R.drawable.image_view_progress_bar));
+		btnRetry = (Button)findViewById(R.id.image_viewer_btnRetry);
 		btnRetry.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View view) {
@@ -103,7 +113,6 @@ public class WebImageViewer extends Activity{
 		super.onResume();
 	}	
 
-
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
@@ -118,58 +127,91 @@ public class WebImageViewer extends Activity{
 		return false;
 	}
 	
-	private class DownImageViewTask extends AsyncTask<String, Void, Bitmap> {
+	private void setProgressPercent(int percent) {
+		mLoadProgress.setProgress(percent);
+		tvLoadingPercent.setText(percent + "%");
+	}
+	
+	private class DownImageViewTask extends AsyncTask<String, Integer, byte[]> {
 
 		@Override
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
-			mLoadProgress.setVisibility(View.VISIBLE);
+			llLoading.setVisibility(View.VISIBLE);
 			super.onPreExecute();
 		}
 		
 		@Override
-		protected Bitmap doInBackground(String... params) {
+		protected byte[] doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			
+			String imageUrl = params[0];
 			int retriedCount;
-			Bitmap bitmap = null;
-			for (retriedCount = 0; retriedCount < retryCount; retriedCount++) {
-				int responseCode = -1;
-				try {
-					URL url = new URL(params[0]);
-					URLConnection con = url.openConnection();
-					con.setConnectTimeout(5000);
-					con.setReadTimeout(5000);
-					con.connect();
-					InputStream bitmapIs = con.getInputStream();
-					bitmap = BitmapFactory.decodeStream(bitmapIs);
-					break;
-				}catch (MalformedURLException e) {
-					e.printStackTrace();
-				}catch (UnsupportedEncodingException e) {
-					// TODO: handle exception
-					e.printStackTrace();
-				}catch (SocketTimeoutException e) {
-					Log.e(TAG, "downImageView:timeout");
-					responseCode++;
-				}catch (IOException e) {
-					e.printStackTrace();
+			//从缓存中查询
+			byte[] image = ImageCache.getInstance().loadImage(imageUrl);
+			if (image == null) {
+				for (retriedCount = 0; retriedCount < retryCount; retriedCount++) {
+					int responseCode = -1;
+					try {
+						URL url = new URL(imageUrl);
+						URLConnection con = url.openConnection();
+						con.setConnectTimeout(5000);
+						con.setReadTimeout(5000);
+						con.connect();
+						int fileSize = con.getContentLength();
+						InputStream raw = con.getInputStream();
+						InputStream in = new BufferedInputStream(raw);
+						byte[] data = new byte[fileSize];
+						int bytesRead = 0;
+						int offset = 0;
+						int progress = 0;
+						while (offset < fileSize) {
+							bytesRead = in.read(data, offset, data.length - offset);
+							if (bytesRead == -1) {
+								break;
+							}
+							offset += bytesRead;
+							progress = (int) (offset * 100.0 / fileSize);
+							publishProgress(progress);
+						}
+						in.close();
+//						bitmap = BitmapFactory.decodeByteArray(data, 0, fileSize);
+						image = data;
+						ImageCache.getInstance().saveImage(imageUrl, data);
+						break;
+					}catch (MalformedURLException e) {
+						e.printStackTrace();
+					}catch (UnsupportedEncodingException e) {
+						// TODO: handle exception
+						e.printStackTrace();
+					}catch (SocketTimeoutException e) {
+						Log.e(TAG, "downImageView:timeout");
+						responseCode++;
+					}catch (IOException e) {
+						e.printStackTrace();
+					}
+	
 				}
-
-			}		
+			}
 			
-			return bitmap;
+			return image;
 		}
 
 		@Override
-		protected void onPostExecute(Bitmap result) {
+		protected void onProgressUpdate(Integer... values) {
+			// TODO Auto-generated method stub
+			setProgressPercent(values[0]);
+		}
+
+		@Override
+		protected void onPostExecute(byte[] result) {
 			// TODO Auto-generated method stub
 			
-			mLoadProgress.setVisibility(View.GONE);
+			llLoading.setVisibility(View.GONE);
 			if (result != null) {
 				btnRetry.setVisibility(View.GONE);
-				imageBitmap = result;
-				mImageShowView.setImageBitmap(result);
+				imageBitmap = BitmapFactory.decodeByteArray(result, 0, result.length);
+				mImageShowView.setImageBitmap(imageBitmap);
 			}else {
 				Utility.displayToast(currentContext, R.string.network_error);
 				btnRetry.setVisibility(View.VISIBLE);

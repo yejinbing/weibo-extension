@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res/com.googlecode.WeiboExtension"
+	android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:background="@android:color/background_dark">
+    <FrameLayout 
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:gravity="center">
+		<LinearLayout 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+			<com.googlecode.WeiboExtension.View.GifView
+			    android:id="@+id/image_preview_gvGif"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="wrap_content"/>
+		</LinearLayout>
+	    <ProgressBar 
+	    	android:id="@+id/image_preview_progress"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_gravity="center"
+			style="@android:style/Widget.ProgressBar.Horizontal"			
+			android:max="100"
+			android:progress="0"
+			android:visibility="gone"/>    
+    </FrameLayout>
+    
+</LinearLayout>

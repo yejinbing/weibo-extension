@@ -23,25 +23,26 @@ import android.widget.TextView;
 
 public class WeiboListAdapter extends BaseAdapter{
 	
-	private static final String TAG = "WeiboListAdapter";
+	private static final String		TAG					= "WeiboListAdapter";
 	
-	public static final String WEIBOLIST_USER_ID = "user_id";
-	public static final String WEIBOLIST_ID = "weibo_id";
-	public static final String WEIBOLIST_LOGO_URL = "logo_url";
-	public static final String WEIBOLIST_SCREEN_NAME = "screen_name";
-	public static final String WEIBOLIST_CREATE_AT = "create_time";
-	public static final String WEIBOLIST_THUMBNAIL_URL = "image_thumbnail_url";
-	public static final String WEIBOLIST_ORIGINAL_URL = "image_url";
-	public static final String WEIBOLIST_TEXT = "text";
-	public static final String WEIBOLIST_RETWEET_USER_ID = "retweet_user_id";
-	public static final String WEIBOLIST_RETWEET_SCREEN_NAME = "retweet_screen_name";
-	public static final String WEIBOLIST_RETWEET_TEXT = "retweet_text";
+	public static final String 		WEIBOLIST_USER_ID 	= "user_id";
+	public static final String 		WEIBOLIST_ID 		= "weibo_id";
+	public static final String 		WEIBOLIST_LOGO_URL 	= "logo_url";
+	public static final String 		WEIBOLIST_SCREEN_NAME = "screen_name";
+	public static final String 		WEIBOLIST_CREATE_AT = "create_time";
+	public static final String 		WEIBOLIST_THUMBNAIL_URL = "image_thumbnail_url";
+	public static final String 		WEIBOLIST_BMIDDLE_URL = "image_bmiddle_url";
+	public static final String 		WEIBOLIST_ORIGINAL_URL = "image_original_url";
+	public static final String 		WEIBOLIST_TEXT = "text";
+	public static final String 		WEIBOLIST_RETWEET_USER_ID = "retweet_user_id";
+	public static final String		WEIBOLIST_RETWEET_SCREEN_NAME = "retweet_screen_name";
+	public static final String		WEIBOLIST_RETWEET_TEXT = "retweet_text";
 	
-	public static final int LOGO_RES = R.drawable.weibo_listview_avatar;
-	public static final int IMAGE_RES = R.drawable.weibo_listview_pic_loading;
+	public static final int 		LOGO_RES			= R.drawable.weibo_listview_avatar;
+	public static final int 		IMAGE_RES			= R.drawable.weibo_listview_pic_loading;
 	
-	private Context mContext;
-	private LayoutInflater mInflater;
+	private Context					mContext;
+	private LayoutInflater			mInflater;
 	private List<Map<String, Object>> mWeiboList;
 	
 	public WeiboListAdapter(Context context, List<Map<String, Object>> timeLine) {
@@ -119,7 +120,7 @@ public class WeiboListAdapter extends BaseAdapter{
 			}else {
 				weiboList.image.setImageBitmap(thumbnialBitmap);	
 			}
-			String imageUrl = (String) mWeiboList.get(position).get(WEIBOLIST_ORIGINAL_URL);
+			String imageUrl = (String) mWeiboList.get(position).get(WEIBOLIST_BMIDDLE_URL);
 			weiboList.image.setOnClickListener(new OnImageClickListener(mContext, imageUrl));
 			
 		}else {
@@ -141,7 +142,7 @@ public class WeiboListAdapter extends BaseAdapter{
 					0, retweetScreenName.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
 			sp.setSpan(new ForegroundColorSpan(mContext.getResources().getColor(
 					R.color.cl_weibolist_create_time)), 
-					retweetScreenName.length(), retweetScreenName.length() + retweetText.length(),
+					retweetScreenName.length() + 1, retweetScreenName.length() + retweetText.length() + 1,
 					Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
 			weiboList.retweetText.setText(sp);
 			weiboList.retweetText.setVisibility(View.VISIBLE);
@@ -177,9 +178,11 @@ public class WeiboListAdapter extends BaseAdapter{
 		
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			Intent intent = new Intent(context, WebImageViewer.class);
-			intent.putExtra("image_url", imageUrl);
-			context.startActivity(intent);
+//			Intent intent = new Intent(context, WebImageViewer.class);
+//			intent.putExtra("image_url", imageUrl);
+//			context.startActivity(intent);
+			WebImagePreview imagePreview = new WebImagePreview(v, imageUrl);
+			imagePreview.show();
 		}
 		
 	}

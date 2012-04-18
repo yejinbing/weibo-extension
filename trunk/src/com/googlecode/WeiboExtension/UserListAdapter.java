@@ -26,20 +26,20 @@ import android.widget.TextView;
 
 public class UserListAdapter extends BaseAdapter{
 	
-	private static final String TAG = "UserListAdapter";
+	private static final String		TAG					= "UserListAdapter";
 	
-	public static final String USERLIST_USER_ID = "user_id";
-	public static final String USERLIST_AVATAR_URL = "avatar_url";
-	public static final String USERLIST_NAME = "name";
-	public static final String USERLIST_DESCRIPTION = "description";
-	public static final String USERLIST_INTRODUCE = "introduce";
-	public static final String USERLIST_LATE_WEIBO = "late_weibo";
-	public static final String USERlIST_IS_FOLLOWING = "is_following";
+	public static final String		USERLIST_USER_ID	= "user_id";
+	public static final String		USERLIST_AVATAR_URL = "avatar_url";
+	public static final String		USERLIST_NAME		= "name";
+	public static final String		USERLIST_DESCRIPTION = "description";
+	public static final String		USERLIST_INTRODUCE	= "introduce";
+	public static final String		USERLIST_LATE_WEIBO	= "late_weibo";
+	public static final String		USERlIST_IS_FOLLOWING = "is_following";
 	
-	public static final int LOGO_RES = R.drawable.weibo_listview_avatar;
+	public static final int			LOGO_RES			= R.drawable.weibo_listview_avatar;
 	
-	private Context mContext;
-	private LayoutInflater mInflater;
+	private Context					mContext;
+	private LayoutInflater			mInflater;
 	private List<Map<String, Object>> mUserList;
 	
 	public UserListAdapter(Context context, List<Map<String, Object>> userList) {

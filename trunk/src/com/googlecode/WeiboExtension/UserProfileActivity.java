@@ -25,38 +25,38 @@ import android.widget.TextView;
 
 public class UserProfileActivity extends Activity{
 	
-	private static final String TAG = "UserProfileActivity";
+	private static final String		TAG					= "UserProfileActivity";
 	
-	private Context currentContext = UserProfileActivity.this;
+	private Context					currentContext		= UserProfileActivity.this;
 	
-	public static final String EXTRA_USER_ID = "weibo_id";
-	public static final String EXTRA_SCREEN_NAME = "screen_name";
-	public static final String EXTRA_AVATAR_URL = "aravar_url";
+	public static final String		EXTRA_USER_ID		= "weibo_id";
+	public static final String		EXTRA_SCREEN_NAME	= "screen_name";
+	public static final String		EXTRA_AVATAR_URL	= "aravar_url";
 	
-	public static final int LOGO_RES = R.drawable.weibo_listview_avatar;
-	public static final int IMAGE_RES = R.drawable.weibo_listview_pic_loading;
+	public static final int			LOGO_RES			= R.drawable.weibo_listview_avatar;
+	public static final int			IMAGE_RES			= R.drawable.weibo_listview_pic_loading;
 	
-	private long userId;
-	private boolean isAttention;
+	private long					userId;
+	private boolean					isAttention;
 	
-	private ImageView userAvatar;
-	private TextView userName;
-	private ImageView userGender;
-	private Button btnOperate;
-	private TextView userAddress;
-	private TextView userLoginName;
-	private TextView userIntroduce;
-	private TextView tvAttentionCount;
-	private TextView tvWeiboCount;
-	private TextView tvFansCount;
-	private TextView tvTopicCount;
+	private ImageView				userAvatar;
+	private TextView				userName;
+	private ImageView				userGender;
+	private Button					btnOperate;
+	private TextView				userAddress;
+	private TextView				userLoginName;
+	private TextView				userIntroduce;
+	private TextView				tvAttentionCount;
+	private TextView				tvWeiboCount;
+	private TextView				tvFansCount;
+	private TextView				tvTopicCount;
 	
-	private LinearLayout llAttention;
-	private LinearLayout llWeibo;
-	private LinearLayout llFans;
-	private LinearLayout llTopic;
+	private LinearLayout			llAttention;
+	private LinearLayout			llWeibo;
+	private LinearLayout			llFans;
+	private LinearLayout			llTopic;
 	
-	private Weibo mWeibo;
+	private Weibo					mWeibo;
 	
 	
 	private LoadUserProfileTask loadUserProfileTask = new LoadUserProfileTask();

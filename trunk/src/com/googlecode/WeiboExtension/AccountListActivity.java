@@ -34,20 +34,22 @@ import android.widget.ListView;
 
 public class AccountListActivity extends Activity{
 
-	private static final String TAG = "WeiboOauthSignPostActivity";
+	private static final String		TAG					= "WeiboOauthSignPostActivity";
 	
-	private Context currentContext = AccountListActivity.this;
+	public static final String		INTENT_ACTION_LOGIN	= "login";
+	
+	private Context 				currentContext		= AccountListActivity.this;
 	    
-	private Button btnAddUser;
-	private ListView mUserListView;
+	private Button					btnAddUser;
+	private ListView				mUserListView;
 	private List<Map<String, Object>> mUserList;
-	private AccountListAdapter mUserListAdatper;
+	private AccountListAdapter		mUserListAdatper;
 	
-	Weibo weibo = Weibo.getInstance();
+	private Weibo					weibo				= Weibo.getInstance();
 	 
-	private int mPosition;
+	private int						mPosition;
 	
-	private long defaultAccount;
+	private long					defaultAccount;
 	
     /** Called when the activity is first created. */
     @Override
@@ -55,24 +57,30 @@ public class AccountListActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userlist);
         
-        initData();
-        
-        btnAddUser = (Button)findViewById(R.id.btn_add_user);
-        mUserListView = (ListView)findViewById(R.id.user_list);
-        
-        boolean hasUser = getUserList();
-     
-        btnAddUser.setOnClickListener(new View.OnClickListener() {
-			
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub				
-		    	addUser();				
-			}
-		});
-        if (!hasUser) {
-        	btnAddUser.setVisibility(View.VISIBLE);
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        if (action.equals(INTENT_ACTION_LOGIN)) {
+        	addUser();
         } else {
-        	btnAddUser.setVisibility(View.GONE);
+        	initData();
+            
+            btnAddUser = (Button)findViewById(R.id.btn_add_user);
+            mUserListView = (ListView)findViewById(R.id.user_list);
+            
+            boolean hasUser = getUserList();
+         
+            btnAddUser.setOnClickListener(new View.OnClickListener() {
+    			
+    			public void onClick(View arg0) {
+    				// TODO Auto-generated method stub				
+    		    	addUser();				
+    			}
+    		});
+            if (!hasUser) {
+            	btnAddUser.setVisibility(View.VISIBLE);
+            } else {
+            	btnAddUser.setVisibility(View.GONE);
+            }
         }
       
     }   
@@ -140,7 +148,7 @@ public class AccountListActivity extends Activity{
          weibo.authorize(AccountListActivity.this, new AuthDialogListener());
     }
     
-    class AuthDialogListener implements WeiboDialogListener {
+    private class AuthDialogListener implements WeiboDialogListener {
 
 		public void onComplete(Bundle values) {
 			// TODO Auto-generated method stub

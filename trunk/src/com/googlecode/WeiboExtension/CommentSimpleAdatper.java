@@ -14,14 +14,14 @@ import android.widget.TextView;
 
 public class CommentSimpleAdatper extends BaseAdapter{
 	
-	public static final String COMMENT_ID = "comment_id";
-	public static final String COMMENT_USER_ID = "comment_user_id";
-	public static final String COMMENT_NAME = "comment_name";
-	public static final String COMMENT_CREATE = "comment_create";
-	public static final String COMMENT_TEXT = "comment_text";
+	public static final String		COMMENT_ID			= "comment_id";
+	public static final String		COMMENT_USER_ID		= "comment_user_id";
+	public static final String		COMMENT_NAME		= "comment_name";
+	public static final String		COMMENT_CREATE		= "comment_create";
+	public static final String		COMMENT_TEXT		= "comment_text";
 	
-	private Context mContext;
-	private LayoutInflater mInflater;
+	private Context					mContext;
+	private LayoutInflater			mInflater;
 	private List<Map<String, Object>> mComments;
 	
 	public CommentSimpleAdatper(Context context, List<Map<String, Object>> comments) {

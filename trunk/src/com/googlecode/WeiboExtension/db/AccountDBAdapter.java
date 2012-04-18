@@ -19,27 +19,27 @@ import android.util.Log;
  */
 public class AccountDBAdapter {
 	
-	public static final String TAG = "DBAdatper";
+	public static final String		TAG					= "DBAdatper";
 
-	public static final String DB_NAME = "weibo.db";
-	public static final int DB_VERSION = 1;
-	public static final String TABLE_USER_TOKEN = "user_token";
-	public static final String KEY_WEIBO_MARK = "weibo_mark";
-	public static final String KEY_TOKEN = "token";
-	public static final String KEY_CONSUMER_KEY = "consumer_key";
-	public static final String KEY_SCREEN_NAME = "screen_name";
-	public static final String TABLE_USER_INFO = "user_info";
-	public static final String KEY_USER_ID = "user_id";
-	public static final String KEY_USER_NAME = "user_name";
-	public static final String KEY_USER_LOCATION = "user_location";
-	public static final String KEY_USER_DESCRIPTION = "user_description";
-	public static final String KEY_USER_URL = "user_url";
+	public static final String		DB_NAME				= "weibo.db";
+	public static final int			DB_VERSION			= 1;
+	public static final String		TABLE_USER_TOKEN	= "user_token";
+	public static final String		KEY_WEIBO_MARK		= "weibo_mark";
+	public static final String		KEY_TOKEN			= "token";
+	public static final String		KEY_CONSUMER_KEY	= "consumer_key";
+	public static final String		KEY_SCREEN_NAME		= "screen_name";
+	public static final String		TABLE_USER_INFO		= "user_info";
+	public static final String		KEY_USER_ID			= "user_id";
+	public static final String		KEY_USER_NAME		= "user_name";
+	public static final String		KEY_USER_LOCATION	= "user_location";
+	public static final String		KEY_USER_DESCRIPTION = "user_description";
+	public static final String		KEY_USER_URL		= "user_url";
 	
-	public static final int WEIBO_MARK_SINA = 0;
-	public static final int WEIBO_MARK_TENCENT = 1;
-	public static final int WEIBO_MARK_SOHU = 2;
+	public static final int			WEIBO_MARK_SINA		= 0;
+	public static final int			WEIBO_MARK_TENCENT	= 1;
+	public static final int			WEIBO_MARK_SOHU		= 2;
 	
-	private static final String CREATE_TABLE_USER_TOKEN = "CREATE TABLE "
+	private static final String		CREATE_TABLE_USER_TOKEN = "CREATE TABLE "
 						+ TABLE_USER_TOKEN + " ("
 						+ KEY_USER_ID + " long primary key,"
 						+ KEY_WEIBO_MARK + " int,"
@@ -56,12 +56,12 @@ public class AccountDBAdapter {
 						+ KEY_USER_URL + " text)";
 
 
-	public static boolean hasModify = false;
+	public static boolean			hasModify			= false;
 
-	private Context context;
-	private MyDBHelper dbHelper;
-	private SQLiteDatabase db = null;
-	private static AccountDBAdapter dbAdapter = null;
+	private Context					context;
+	private MyDBHelper				dbHelper;
+	private SQLiteDatabase			db					= null;
+	private static AccountDBAdapter dbAdapter			= null;
 
 	public static synchronized AccountDBAdapter getInstance(Context context) {
 		if (dbAdapter == null)

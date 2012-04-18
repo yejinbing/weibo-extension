@@ -16,11 +16,11 @@ import com.googlecode.WeiboExtension.View.AbsWeiboList;
 
 public class UserTimeLineListView extends AbsWeiboList{
 	
-	private static final String TAG = "FriendsTimeLineListView";
+	private static final String		TAG					= "FriendsTimeLineListView";
 
-	private Context mContext;
-	private Weibo mWeibo;
-	private long userId;
+	private Context					mContext;
+	private Weibo					mWeibo;
+	private long					userId;
 
 	public UserTimeLineListView(Context context) {
 		super(context);

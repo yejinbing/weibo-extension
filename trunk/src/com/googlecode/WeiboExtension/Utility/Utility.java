@@ -46,4 +46,34 @@ public class Utility {
 	public static String convertUrlToFilename(String url) {
 		return MD5.toHexString(url.toCharArray());
 	}
+	
+	/**
+     * 判断图片的格式 
+     * @param image 图片数组
+     * @return GIF JPG PNG BMP
+     */
+    public static String getFormat(byte[] image) {
+        String PicFormat = "UNKNOWN";
+       
+        StringBuffer sb = new StringBuffer();
+        int tmp = 0;
+        for (int i = 0; i < 16;i++) {
+            tmp = image[i];
+            if(tmp >= 32 && tmp <= 127) {
+                sb.append((char)tmp);
+            }
+        }
+        String head = sb.toString();
+        if(head.toUpperCase().startsWith("GIF")) {
+            PicFormat = "GIF";
+        } else if(head.toUpperCase().startsWith("JFIF")) {
+            PicFormat = "JPG";
+        } else if(head.toUpperCase().startsWith("PNG")) {
+            PicFormat = "PNG";
+        } else if(head.toUpperCase().startsWith("BM")) {
+            PicFormat = "BMP";
+        }
+        
+        return PicFormat;
+    }
 }
