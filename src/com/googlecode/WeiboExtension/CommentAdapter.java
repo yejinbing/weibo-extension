@@ -18,19 +18,19 @@ import android.widget.TextView;
 
 public class CommentAdapter extends BaseAdapter{
 	
-	public static final String COMMENT_ID = "comment_id";
-	public static final String COMMENT_USER_ID = "comment_user_id";
-	public static final String COMMENT_LOGO_URL = "logo_url";
-	public static final String COMMENT_NAME = "comment_name";
-	public static final String COMMENT_CREATE = "comment_create";
-	public static final String COMMENT_TEXT = "comment_text";
-	public static final String COMMENT_REPLY_TEXT = "reply_text";
+	public static final String		COMMENT_ID			= "comment_id";
+	public static final String		COMMENT_USER_ID		= "comment_user_id";
+	public static final String		COMMENT_LOGO_URL	= "logo_url";
+	public static final String		COMMENT_NAME		= "comment_name";
+	public static final String		COMMENT_CREATE		= "comment_create";
+	public static final String		COMMENT_TEXT		= "comment_text";
+	public static final String		COMMENT_REPLY_TEXT	= "reply_text";
 	
-	private Context mContext;
-	private LayoutInflater mInflater;
+	private Context					mContext;
+	private LayoutInflater			mInflater;
 	private List<Map<String, Object>> mComments;
 	
-	public static final int LOGO_RES = R.drawable.weibo_listview_avatar;
+	public static final int			LOGO_RES			= R.drawable.weibo_listview_avatar;
 	
 	public CommentAdapter(Context context, List<Map<String, Object>> comments) {
 		this.mContext = context;

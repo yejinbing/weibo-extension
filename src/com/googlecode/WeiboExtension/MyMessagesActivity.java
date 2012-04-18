@@ -19,18 +19,18 @@ import android.widget.BaseAdapter;
 
 public class MyMessagesActivity extends Activity{
 	
-	private static final String TAG = "MyMessagesActivity";
+	private static final String		TAG					= "MyMessagesActivity";
 	
-	private Context currentContext = MyMessagesActivity.this;
+	private Context					currentContext		= MyMessagesActivity.this;
 	
-	public static final int DIALOG_EXIT = 0;
+	public static final int			DIALOG_EXIT			= 0;
 	
-	private MyMentionsListView myMentionsListView;
-	private CommentsToMeListView commentsToMeListView;
-	private String[] titles;
-	private List<View> mListViews;
+	private MyMentionsListView		myMentionsListView;
+	private CommentsToMeListView	commentsToMeListView;
+	private String[]				titles;
+	private List<View>				mListViews;
 	
-	private ViewFlow mViewFlow;
+	private ViewFlow				mViewFlow;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -3,7 +3,6 @@ package com.googlecode.WeiboExtension;
 import com.googlecode.WeiboExtension.EventStream.SNSSampleService;
 import com.googlecode.WeiboExtension.Utility.Utility;
 import com.googlecode.WeiboExtension.db.TimeLineDBAdapter;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -17,18 +16,19 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
+import android.text.TextUtils;
 import android.util.Log;
 
 public class SettingsActivity extends PreferenceActivity implements OnPreferenceClickListener,
 							OnPreferenceChangeListener{
 	
-	private static final String TAG = "Settings";
+	private static final String		TAG					= "Settings";
 	
-	public static final int DIALOG_CLEAR_CACHE = 0;
+	public static final int			DIALOG_CLEAR_CACHE	= 0;
 	
-	private Preference clearCache;
-	private EditTextPreference maxCache;
-	private CheckBoxPreference automaticAlert;	private ListPreference lpInspectionInterval;
+	private Preference				clearCache;
+	private EditTextPreference		maxCache;
+	private CheckBoxPreference		automaticAlert;	private ListPreference			lpInspectionInterval;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 		}
 	//设置检测间隔的summary
 		String inspectionIntervalValue = prefs.getString("inspection_interval", null);
-		if (inspectionIntervalValue != null) {
+		if (!TextUtils.isEmpty(inspectionIntervalValue)) {
 			String[] valueArray = getResources().getStringArray(
 					R.array.inspection_interval_entryValues);
 			int i = 0;
@@ -72,12 +72,14 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 				}
 				i++;
 			}
-			if (i >= valueArray.length) {
+			if (i < valueArray.length) {
+				String[] entryArray = getResources().getStringArray(
+						R.array.inspection_interval_entries);
+				lpInspectionInterval.setSummary(entryArray[i]);
+			} else {
 				Log.e(TAG, "onPreferenceChange: no value in the inspection_interval_entryValues");
 			}
-			String[] entryArray = getResources().getStringArray(
-					R.array.inspection_interval_entries);
-			lpInspectionInterval.setSummary(entryArray[i]);
+			
 		}
 		
 	}

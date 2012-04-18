@@ -181,12 +181,15 @@
     <!-- Title of notification that is shown if an update fails -->
     <string name="ts_snssample_update_failed_notification_title">Could not update from Facebook</string>
     
+<!-- error message -->
+	<string name="expired_token">Token has expired, Login again?</string>
+    
 <!-- About info -->	
 	<string name="about_dialog_text">Author: JinBing Ye
    		\nEmail:yejinbing@gmail.com
    		\nWeibo:http://weibo.com/u/1651930930
    		\n
-   		\nVersion:1.3.4
-   		\nUpdate Data:2012-3-27
+   		\nVersion:1.3.8
+   		\nUpdate Data:2012-4-18
    	</string>
 </resources>

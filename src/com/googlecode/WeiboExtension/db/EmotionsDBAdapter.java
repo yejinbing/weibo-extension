@@ -11,18 +11,18 @@ import android.util.Log;
 import com.googlecode.WeiboExtension.Constants;
 
 public class EmotionsDBAdapter {
-	public static final String TAG = "EmotionsDBAdapter";
+	public static final String		TAG					= "EmotionsDBAdapter";
 
-	public static final String DB_NAME = "emotions.db";
-	public static final int DB_VERSION = 1;
-	public static final String TABLE_EMOTIONS = "emotions";
-	public static final String KEY_CATEGORY = "category";
-	public static final String KEY_TYPE = "type";
-	public static final String KEY_URL = "url";
-	public static final String KEY_VALUE = "value";
-	public static final String KEY_DATA = "data";
+	public static final String		DB_NAME				= "emotions.db";
+	public static final int			DB_VERSION			= 1;
+	public static final String		TABLE_EMOTIONS		= "emotions";
+	public static final String		KEY_CATEGORY		= "category";
+	public static final String		KEY_TYPE			= "type";
+	public static final String		KEY_URL				= "url";
+	public static final String		KEY_VALUE			= "value";
+	public static final String		KEY_DATA			= "data";
 	
-	private static final String CREATE_TABLE_EMOTIONS = "CREATE TABLE "
+	private static final String		CREATE_TABLE_EMOTIONS = "CREATE TABLE "
 						+ TABLE_EMOTIONS + " ("
 						+ KEY_CATEGORY + " text,"
 						+ KEY_TYPE + " text,"
@@ -32,12 +32,12 @@ public class EmotionsDBAdapter {
 
 
 
-	public static boolean hasModify = false;
+	public static boolean			hasModify			= false;
 
-	private Context context;
-	private MyDBHelper dbHelper;
-	private SQLiteDatabase db = null;
-	private static EmotionsDBAdapter dbAdapter = null;
+	private Context					context;
+	private MyDBHelper				dbHelper;
+	private SQLiteDatabase			db					= null;
+	private static EmotionsDBAdapter dbAdapter			= null;
 
 	public static synchronized EmotionsDBAdapter getInstance(Context context) {
 		if (dbAdapter == null)

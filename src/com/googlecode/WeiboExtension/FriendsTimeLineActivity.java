@@ -25,17 +25,17 @@ import android.widget.TextView;
 public class FriendsTimeLineActivity extends Activity{	
 
 
-	private static final String TAG = "FriendsTimeLineActivity";
+	private static final String		TAG					= "FriendsTimeLineActivity";
 	
-	private Context currentContext = FriendsTimeLineActivity.this;
+	private Context					currentContext		= FriendsTimeLineActivity.this;
 	
-	public static final int DIALOG_EXIT = 0;
+	public static final int			DIALOG_EXIT			= 0;
 	
 	private FriendsTimeLineListView mWeiboListView;
 	
-	private ImageView titlebarRefresh;
-	private TextView titlebarName;
-	private ImageView titlebarEdit;
+	private ImageView				titlebarRefresh;
+	private TextView				titlebarName;
+	private ImageView				titlebarEdit;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

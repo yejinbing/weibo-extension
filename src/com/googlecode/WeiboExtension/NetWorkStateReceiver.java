@@ -15,7 +15,7 @@ import android.util.Log;
  */
 public class NetWorkStateReceiver extends BroadcastReceiver{
 	
-	private static final String TAG = "NetWorkStateReceiver";
+	private static final String		TAG					= "NetWorkStateReceiver";
 
 	@Override
 	public void onReceive(Context context, Intent intent) {

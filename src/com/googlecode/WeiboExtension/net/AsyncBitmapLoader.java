@@ -22,7 +22,8 @@ import android.widget.ImageView;
  **/
 public class AsyncBitmapLoader
 {
-	private String ThumbnailDir;
+	private String					ThumbnailDir;
+
 	/**
 	 * 内存图片软引用缓冲
 	 */

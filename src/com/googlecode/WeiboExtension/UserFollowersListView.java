@@ -16,13 +16,13 @@ import com.googlecode.WeiboExtension.View.AbsUserList;
 
 public class UserFollowersListView extends AbsUserList{
 
-	private static final String TAG = "UserFollowersListView";
+	private static final String		TAG					= "UserFollowersListView";
 	
-	private Context mContext;
-	private Weibo mWeibo;
+	private Context					mContext;
+	private Weibo					mWeibo;
 	
-	private long userId;
-	private int nextCursor = 0;
+	private long					userId;
+	private int						nextCursor			= 0;
 
 	public UserFollowersListView(Context context) {
 		super(context);

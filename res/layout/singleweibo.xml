@@ -31,20 +31,10 @@
 				android:layout_width="fill_parent"
 	    		android:layout_height="wrap_content">
 				<TextView 
-					android:id="@+id/singleweibo_repost_comment"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginLeft="10dp"
-					android:layout_marginRight="10dp"
-					android:layout_alignParentRight="true"
-					android:textColor="@color/cl_singleweibo_repost_comment"
-					android:textSize="@dimen/dm_singleweibo_repost_comment"/>
-				<TextView 
 	    			android:id="@+id/singleweibo_create_at"
 	    			android:layout_width="wrap_content"
 	    			android:layout_height="wrap_content"
 	    			android:layout_alignParentLeft="true"
-	    			android:layout_toLeftOf="@id/singleweibo_repost_comment"
 	    			android:textColor="@color/cl_timeline_create_time"
 	    			android:textSize="@dimen/dm_timeline_create_time"/>
 		</RelativeLayout>
@@ -116,6 +106,30 @@
 				android:textSize="@dimen/dm_singleweibo_repost_comment"/>
     	</RelativeLayout>
 		
+	</LinearLayout>
+	
+	<LinearLayout 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+		<Button 
+			android:id="@+id/singleweibo_btnRepostNum"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/detail_redirect_button_bg"
+			android:layout_weight="1.0"
+			android:textSize="18.0sp"
+			android:textStyle="bold"
+			android:textColor="#ff5779a7"/>
+		<Button 
+			android:id="@+id/singleweibo_btnCommentNum"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/detail_comment_button_bg"
+			android:layout_weight="1.0"
+			android:textSize="18.0sp"
+			android:textStyle="bold"
+			android:textColor="#ff5779a7"/>
 	</LinearLayout>
 	
 </LinearLayout>

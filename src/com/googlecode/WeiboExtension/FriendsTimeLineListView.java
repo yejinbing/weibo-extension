@@ -18,10 +18,10 @@ import com.googlecode.WeiboExtension.db.TimeLineDBAdapter;
 
 public class FriendsTimeLineListView extends AbsWeiboList{
 	
-	private static final String TAG = "FriendsTimeLineListView";
+	private static final String		TAG					= "FriendsTimeLineListView";
 
-	private Context mContext;
-	private Weibo mWeibo;
+	private Context					mContext;
+	private Weibo					mWeibo;
 
 	public FriendsTimeLineListView(Context context) {
 		super(context);

@@ -24,10 +24,10 @@ import com.googlecode.WeiboExtension.db.TimeLineDBAdapter;
 
 public class MyMentionsListView extends AbsWeiboList{
 	
-	private static final String TAG = "MyMentionsListView";
+	private static final String		TAG					= "MyMentionsListView";
 
-	private Context mContext;
-	private Weibo mWeibo;
+	private Context					mContext;
+	private Weibo					mWeibo;
 
 	public MyMentionsListView(Context context) {
 		super(context);

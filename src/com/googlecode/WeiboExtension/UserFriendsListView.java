@@ -16,12 +16,12 @@ import com.googlecode.WeiboExtension.View.AbsUserList;
 
 public class UserFriendsListView extends AbsUserList{
 	
-	private static final String TAG = "UserFriendsListView";
+	private static final String		TAG					= "UserFriendsListView";
 	
-	private Context mContext;
-	private Weibo mWeibo;
-	private long userId;
-	private int nextCursor = 0;
+	private Context					mContext;
+	private Weibo					mWeibo;
+	private long					userId;
+	private int						nextCursor = 0;
 
 	public UserFriendsListView(Context context) {
 		super(context);

@@ -11,18 +11,18 @@ import android.widget.TextView;
 
 public class UserFollowersActivity extends Activity{
 	
-	private static final String TAG = "UserFollowersActivity";
+	private static final String		TAG					= "UserFollowersActivity";
 	
-	public static final String EXTRA_USER_ID = "weibo_id";
-	public static final String EXTRA_SCREEN_NAME = "screen_name";
+	public static final String		EXTRA_USER_ID		= "weibo_id";
+	public static final String		EXTRA_SCREEN_NAME	= "screen_name";
 	
-	private ImageView titlebarBack;
-	private TextView titlebarName;
-	private ImageView titlebarHome;
+	private ImageView				titlebarBack;
+	private TextView				titlebarName;
+	private ImageView				titlebarHome;
 	
-	private UserFollowersListView mUserFollowersListView;
+	private UserFollowersListView	mUserFollowersListView;
 	
-	private long userId;
+	private long					userId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

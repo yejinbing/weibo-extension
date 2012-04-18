@@ -13,13 +13,13 @@ import android.widget.TextView;
 
 public class AccountListAdapter extends BaseAdapter{
 	
-	public static final String USERLIST_LOGO = "userlist_logo";
-	public static final String USERLIST_ID = "userlist_id";
-	public static final String USERLIST_NAME = "userlist_name";
-	public static final String USERLIST_DEFAULT = "userlist_default";
+	public static final String		USERLIST_LOGO			= "userlist_logo";
+	public static final String		USERLIST_ID				= "userlist_id";
+	public static final String		USERLIST_NAME			= "userlist_name";
+	public static final String		USERLIST_DEFAULT		= "userlist_default";
 	
-	private Context mContext;
-	private LayoutInflater mInflater;
+	private Context					mContext;
+	private LayoutInflater			mInflater;
 	private List<Map<String, Object>> mUserList;
 	
 	public AccountListAdapter(Context context, List<Map<String, Object>> userList) {
